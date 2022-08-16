@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <highcharts
+      :constructorType="'stockChart'"
+      class="hc"
+      :options="chartOptions"
+      ref="chart"
+    ></highcharts>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { Chart } from "highcharts-vue";
+import Highcharts from "highcharts";
+import Stock from "highcharts/modules/stock";
+import exportingInit from "highcharts/modules/exporting";
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+   components: {
+    highcharts: Chart
+  },
+  data() {
+    return {
+      chartOptions: {
+        series: [
+          {
+            data: [1, 2, 3],
+          },
+        ],
+      },
+    };
+  },
+};
 </script>
